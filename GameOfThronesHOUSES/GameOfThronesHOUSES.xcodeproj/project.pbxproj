@@ -16,6 +16,12 @@
 		B49F129A2A3F95EA00A2F76C /* GameOfThronesHOUSESTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F12992A3F95EA00A2F76C /* GameOfThronesHOUSESTests.swift */; };
 		B49F12A42A3F95EB00A2F76C /* GameOfThronesHOUSESUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F12A32A3F95EB00A2F76C /* GameOfThronesHOUSESUITests.swift */; };
 		B49F12A62A3F95EB00A2F76C /* GameOfThronesHOUSESUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F12A52A3F95EB00A2F76C /* GameOfThronesHOUSESUITestsLaunchTests.swift */; };
+		B49F12B82A3FB08700A2F76C /* GOTHouseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F12B72A3FB08700A2F76C /* GOTHouseModel.swift */; };
+		B49F12BA2A3FB22100A2F76C /* GOTHousesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F12B92A3FB22100A2F76C /* GOTHousesViewController.swift */; };
+		B49F12BC2A3FB23200A2F76C /* GOTHouseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F12BB2A3FB23200A2F76C /* GOTHouseDetailsViewController.swift */; };
+		B49F12BE2A3FB26100A2F76C /* GOTHousesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F12BD2A3FB26100A2F76C /* GOTHousesPresenter.swift */; };
+		B49F12C02A3FB26F00A2F76C /* GOTHouseDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F12BF2A3FB26F00A2F76C /* GOTHouseDetailsPresenter.swift */; };
+		B49F12C22A3FB29900A2F76C /* GOTHousesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F12C12A3FB29900A2F76C /* GOTHousesService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,12 @@
 		B49F129F2A3F95EA00A2F76C /* GameOfThronesHOUSESUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameOfThronesHOUSESUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B49F12A32A3F95EB00A2F76C /* GameOfThronesHOUSESUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfThronesHOUSESUITests.swift; sourceTree = "<group>"; };
 		B49F12A52A3F95EB00A2F76C /* GameOfThronesHOUSESUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfThronesHOUSESUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B49F12B72A3FB08700A2F76C /* GOTHouseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOTHouseModel.swift; sourceTree = "<group>"; };
+		B49F12B92A3FB22100A2F76C /* GOTHousesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOTHousesViewController.swift; sourceTree = "<group>"; };
+		B49F12BB2A3FB23200A2F76C /* GOTHouseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOTHouseDetailsViewController.swift; sourceTree = "<group>"; };
+		B49F12BD2A3FB26100A2F76C /* GOTHousesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOTHousesPresenter.swift; sourceTree = "<group>"; };
+		B49F12BF2A3FB26F00A2F76C /* GOTHouseDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOTHouseDetailsPresenter.swift; sourceTree = "<group>"; };
+		B49F12C12A3FB29900A2F76C /* GOTHousesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOTHousesService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +111,11 @@
 		B49F12812A3F95E800A2F76C /* GameOfThronesHOUSES */ = {
 			isa = PBXGroup;
 			children = (
+				B49F12B52A3FAF9900A2F76C /* Models */,
+				B49F12B42A3FAF9900A2F76C /* Views */,
+				B49F12B32A3FAF9900A2F76C /* Presenters */,
+				B49F12B22A3FAF9900A2F76C /* Services */,
+				B49F12B62A3FAF9900A2F76C /* Extensions */,
 				B49F12822A3F95E800A2F76C /* AppDelegate.swift */,
 				B49F12842A3F95E800A2F76C /* SceneDelegate.swift */,
 				B49F12862A3F95E800A2F76C /* ViewController.swift */,
@@ -125,6 +142,52 @@
 				B49F12A52A3F95EB00A2F76C /* GameOfThronesHOUSESUITestsLaunchTests.swift */,
 			);
 			path = GameOfThronesHOUSESUITests;
+			sourceTree = "<group>";
+		};
+		B49F12B22A3FAF9900A2F76C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B49F12C12A3FB29900A2F76C /* GOTHousesService.swift */,
+			);
+			name = Services;
+			path = Classes/Services;
+			sourceTree = "<group>";
+		};
+		B49F12B32A3FAF9900A2F76C /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				B49F12BD2A3FB26100A2F76C /* GOTHousesPresenter.swift */,
+				B49F12BF2A3FB26F00A2F76C /* GOTHouseDetailsPresenter.swift */,
+			);
+			name = Presenters;
+			path = Classes/Presenters;
+			sourceTree = "<group>";
+		};
+		B49F12B42A3FAF9900A2F76C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B49F12B92A3FB22100A2F76C /* GOTHousesViewController.swift */,
+				B49F12BB2A3FB23200A2F76C /* GOTHouseDetailsViewController.swift */,
+			);
+			name = Views;
+			path = Classes/Views;
+			sourceTree = "<group>";
+		};
+		B49F12B52A3FAF9900A2F76C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B49F12B72A3FB08700A2F76C /* GOTHouseModel.swift */,
+			);
+			name = Models;
+			path = Classes/Models;
+			sourceTree = "<group>";
+		};
+		B49F12B62A3FAF9900A2F76C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
+			path = Classes/Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +322,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B49F12872A3F95E800A2F76C /* ViewController.swift in Sources */,
+				B49F12BA2A3FB22100A2F76C /* GOTHousesViewController.swift in Sources */,
+				B49F12C22A3FB29900A2F76C /* GOTHousesService.swift in Sources */,
+				B49F12B82A3FB08700A2F76C /* GOTHouseModel.swift in Sources */,
 				B49F12832A3F95E800A2F76C /* AppDelegate.swift in Sources */,
 				B49F12852A3F95E800A2F76C /* SceneDelegate.swift in Sources */,
+				B49F12C02A3FB26F00A2F76C /* GOTHouseDetailsPresenter.swift in Sources */,
+				B49F12BE2A3FB26100A2F76C /* GOTHousesPresenter.swift in Sources */,
+				B49F12BC2A3FB23200A2F76C /* GOTHouseDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
