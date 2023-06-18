@@ -9,4 +9,9 @@ import UIKit
 
 class GOTHousesViewController: UIViewController {
     private let housesPresenter = GOTHousesPresenter(housesService: GOTHousesService())
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        housesPresenter.showInitialHouses()
+    }
 }

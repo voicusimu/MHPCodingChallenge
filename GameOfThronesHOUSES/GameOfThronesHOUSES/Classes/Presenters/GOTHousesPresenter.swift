@@ -24,7 +24,7 @@ class GOTHousesPresenter {
         self.housesDelegate = housesDelegate
     }
 
-    func loadMoreRepositories() {
+    func loadMoreHouses() {
         housesService.getHouses(page: currentPage + 1) { [weak self] (houses, hasError) in
             if houses.count > 0 {
                 self?.currentPage+=1
@@ -33,7 +33,7 @@ class GOTHousesPresenter {
         }
     }
 
-    func showInitialRepositories() {
+    func showInitialHouses() {
         currentPage = 1
         housesService.getHouses(page: currentPage) { [weak self] (houses, hasError) in
             self?.housesDelegate?.didLoadInitialHouses(houses: houses, hasError: hasError)

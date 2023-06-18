@@ -39,6 +39,8 @@ class GOTHousesService {
                     print("HTTP Request Failed \(error)")
                 }
             }
+
+            task.resume()
         }
     }
 }
