@@ -35,10 +35,6 @@ class GOTHousesViewController: UIViewController {
       return searchController.isActive && !isSearchBarEmpty
     }
 
-    var isInternetAvailable: Bool {
-        return true
-    }
-
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()

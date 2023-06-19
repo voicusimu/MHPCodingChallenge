@@ -25,3 +25,14 @@ Requirements
     Use version management (GitHub, Bitbucket) to make the project available to us.
 
 Have fun!
+
+
+Approach:
+
+- I created a native iOS application using an MVP architecture, without the use of any third party libraries
+- I added the following features:
+    - basic error handling
+    - Proper UI implementation for different use states: Loading, No data to display, Error
+    - Pagination using the API pagination functionality (when scrolling at the bottom of the tableView)
+    - Search functionality
+    - A basic details view that shows the rest of the information provided by the API
