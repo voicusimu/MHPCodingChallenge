@@ -22,6 +22,8 @@
 		B49F12BE2A3FB26100A2F76C /* GOTHousesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F12BD2A3FB26100A2F76C /* GOTHousesPresenter.swift */; };
 		B49F12C02A3FB26F00A2F76C /* GOTHouseDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F12BF2A3FB26F00A2F76C /* GOTHouseDetailsPresenter.swift */; };
 		B49F12C22A3FB29900A2F76C /* GOTHousesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F12C12A3FB29900A2F76C /* GOTHousesService.swift */; };
+		B49F12C62A3FC24C00A2F76C /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F12C52A3FC24C00A2F76C /* UITableView+Extension.swift */; };
+		B49F12C82A3FC93D00A2F76C /* HouseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F12C72A3FC93D00A2F76C /* HouseTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		B49F12BD2A3FB26100A2F76C /* GOTHousesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOTHousesPresenter.swift; sourceTree = "<group>"; };
 		B49F12BF2A3FB26F00A2F76C /* GOTHouseDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOTHouseDetailsPresenter.swift; sourceTree = "<group>"; };
 		B49F12C12A3FB29900A2F76C /* GOTHousesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOTHousesService.swift; sourceTree = "<group>"; };
+		B49F12C52A3FC24C00A2F76C /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		B49F12C72A3FC93D00A2F76C /* HouseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,7 @@
 			children = (
 				B49F12B92A3FB22100A2F76C /* GOTHousesViewController.swift */,
 				B49F12BB2A3FB23200A2F76C /* GOTHouseDetailsViewController.swift */,
+				B49F12C72A3FC93D00A2F76C /* HouseTableViewCell.swift */,
 			);
 			name = Views;
 			path = Classes/Views;
@@ -185,6 +190,7 @@
 		B49F12B62A3FAF9900A2F76C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B49F12C52A3FC24C00A2F76C /* UITableView+Extension.swift */,
 			);
 			name = Extensions;
 			path = Classes/Extensions;
@@ -321,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B49F12C62A3FC24C00A2F76C /* UITableView+Extension.swift in Sources */,
 				B49F12872A3F95E800A2F76C /* ViewController.swift in Sources */,
 				B49F12BA2A3FB22100A2F76C /* GOTHousesViewController.swift in Sources */,
 				B49F12C22A3FB29900A2F76C /* GOTHousesService.swift in Sources */,
@@ -329,6 +336,7 @@
 				B49F12852A3F95E800A2F76C /* SceneDelegate.swift in Sources */,
 				B49F12C02A3FB26F00A2F76C /* GOTHouseDetailsPresenter.swift in Sources */,
 				B49F12BE2A3FB26100A2F76C /* GOTHousesPresenter.swift in Sources */,
+				B49F12C82A3FC93D00A2F76C /* HouseTableViewCell.swift in Sources */,
 				B49F12BC2A3FB23200A2F76C /* GOTHouseDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

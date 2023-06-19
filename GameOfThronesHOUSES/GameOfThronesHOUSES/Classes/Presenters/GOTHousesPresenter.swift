@@ -29,14 +29,18 @@ class GOTHousesPresenter {
             if houses.count > 0 {
                 self?.currentPage+=1
             }
-            self?.housesDelegate?.didLoadMoreHouses(houses: houses, hasError: hasError)
+            DispatchQueue.main.async {
+                self?.housesDelegate?.didLoadMoreHouses(houses: houses, hasError: hasError)
+            }
         }
     }
 
     func showInitialHouses() {
         currentPage = 1
         housesService.getHouses(page: currentPage) { [weak self] (houses, hasError) in
-            self?.housesDelegate?.didLoadInitialHouses(houses: houses, hasError: hasError)
+            DispatchQueue.main.async {
+                self?.housesDelegate?.didLoadInitialHouses(houses: houses, hasError: hasError)
+            }
         }
     }
 }

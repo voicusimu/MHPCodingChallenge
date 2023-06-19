@@ -8,5 +8,5 @@
 import UIKit
 
 class GOTHouseDetailsViewController: UIViewController {
-
+    var detailsPresenter: GOTHouseDetailsPresenter?
 }

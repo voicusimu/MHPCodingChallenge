@@ -9,7 +9,7 @@ import Foundation
 
 class GOTHousesService {
     func getHouses(page: Int = 1,
-                   pageSize: Int = 5,
+                   pageSize: Int = 10,
                    callBack: @escaping ([GOTHouseModel], Bool) -> Void) {
 
         var components = URLComponents()
