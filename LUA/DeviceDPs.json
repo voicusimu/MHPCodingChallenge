@@ -1,0 +1,201 @@
+{
+  "result": {
+    "properties": [
+      {
+        "code": "sync_request",
+        "custom_name": "",
+        "dp_id": 101,
+        "time": 1774812514842,
+        "type": "enum",
+        "value": "request"
+      },
+      {
+        "code": "sync_response",
+        "custom_name": "",
+        "dp_id": 102,
+        "time": 1774812514842,
+        "type": "enum",
+        "value": "idle"
+      },
+      {
+        "code": "device_state1",
+        "custom_name": "",
+        "dp_id": 103,
+        "time": 1774812394842,
+        "type": "enum",
+        "value": "monitor"
+      },
+      {
+        "code": "add_ele1",
+        "custom_name": "",
+        "dp_id": 104,
+        "time": 1774743846769,
+        "type": "value",
+        "value": 1
+      },
+      {
+        "code": "cur_power1",
+        "custom_name": "",
+        "dp_id": 105,
+        "time": 1774812394842,
+        "type": "value",
+        "value": 0
+      },
+      {
+        "code": "cur_current1",
+        "custom_name": "",
+        "dp_id": 106,
+        "time": 1774812394842,
+        "type": "value",
+        "value": 0
+      },
+      {
+        "code": "cur_voltage1",
+        "custom_name": "",
+        "dp_id": 107,
+        "time": 1774812394842,
+        "type": "value",
+        "value": 2385
+      },
+      {
+        "code": "total_energy1",
+        "custom_name": "",
+        "dp_id": 108,
+        "time": 1774780027913,
+        "type": "value",
+        "value": 19960735
+      },
+      {
+        "code": "today_acc_energy1",
+        "custom_name": "",
+        "dp_id": 109,
+        "time": 1774780027913,
+        "type": "value",
+        "value": 7
+      },
+      {
+        "code": "power_type1",
+        "custom_name": "",
+        "dp_id": 110,
+        "time": 1774730161500,
+        "type": "enum",
+        "value": "normal"
+      },
+      {
+        "code": "warn_power1",
+        "custom_name": "",
+        "dp_id": 111,
+        "time": 1774730161500,
+        "type": "value",
+        "value": 3900
+      },
+      {
+        "code": "today_energy_add1",
+        "custom_name": "",
+        "dp_id": 112,
+        "time": 1774729162978,
+        "type": "value",
+        "value": 2
+      },
+      {
+        "code": "device_state2",
+        "custom_name": "",
+        "dp_id": 113,
+        "time": 1774730161500,
+        "type": "enum",
+        "value": "working"
+      },
+      {
+        "code": "add_ele2",
+        "custom_name": "",
+        "dp_id": 114,
+        "time": 1774812518974,
+        "type": "value",
+        "value": 1
+      },
+      {
+        "code": "cur_power2",
+        "custom_name": "",
+        "dp_id": 115,
+        "time": 1774812518962,
+        "type": "value",
+        "value": 1136
+      },
+      {
+        "code": "cur_current2",
+        "custom_name": "",
+        "dp_id": 116,
+        "time": 1774812518962,
+        "type": "value",
+        "value": 1324
+      },
+      {
+        "code": "cur_voltage2",
+        "custom_name": "",
+        "dp_id": 117,
+        "time": 1774812518962,
+        "type": "value",
+        "value": 2375
+      },
+      {
+        "code": "total_energy2",
+        "custom_name": "",
+        "dp_id": 118,
+        "time": 1774812518974,
+        "type": "value",
+        "value": 20017303
+      },
+      {
+        "code": "today_acc_energy2",
+        "custom_name": "",
+        "dp_id": 119,
+        "time": 1774812518974,
+        "type": "value",
+        "value": 4515
+      },
+      {
+        "code": "power_type2",
+        "custom_name": "",
+        "dp_id": 120,
+        "time": 1774730161500,
+        "type": "enum",
+        "value": "normal"
+      },
+      {
+        "code": "warn_power2",
+        "custom_name": "",
+        "dp_id": 121,
+        "time": 1774730161500,
+        "type": "value",
+        "value": 3900
+      },
+      {
+        "code": "today_energy_add2",
+        "custom_name": "",
+        "dp_id": 122,
+        "time": 1774812518974,
+        "type": "value",
+        "value": 1
+      },
+      {
+        "code": "all_energy",
+        "custom_name": "",
+        "dp_id": 123,
+        "time": 1774812518962,
+        "type": "value",
+        "value": 39978038
+      },
+      {
+        "code": "net_state",
+        "custom_name": "",
+        "dp_id": 124,
+        "time": 1774755447733,
+        "type": "enum",
+        "value": "cloud_net"
+      }
+    ]
+  },
+  "success": true,
+  "t": 1774812527193,
+  "tid": "81bd08022ba511f1a0f21627c8227acc"
+}

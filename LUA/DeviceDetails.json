@@ -1,0 +1,29 @@
+{
+  "result": [
+    {
+      "active_time": 1774711791,
+      "bind_space_id": "70042997",
+      "category": "cz",
+      "create_time": 1774711791,
+      "custom_name": "",
+      "icon": "smart/icon/ay1504535816017oOfFp/3ccdd6937c07d34f2ee22721b4aa1247.jpg",
+      "id": "bf18ac8cd88ec18e72jm22",
+      "ip": "188.24.4.241",
+      "is_online": true,
+      "lat": "47.13",
+      "local_key": "<=>otLOL0hcow#Bi",
+      "lon": "24.49",
+      "model": "",
+      "name": "Double Digital Meter",
+      "product_id": "79a7z01v3n35kytb",
+      "product_name": "双路电流互感计量器（WiFi版）",
+      "sub": false,
+      "time_zone": "+02:00",
+      "update_time": 1774807421,
+      "uuid": "536cd9256b8a057d"
+    }
+  ],
+  "success": true,
+  "t": 1774812282058,
+  "tid": "ef9702542ba411f187021a950d28c751"
+}
