@@ -160,17 +160,29 @@ function QuickApp:connect()
         data        = tools.prettyJson(payloaddata),
         key         = self.devKEY,
         version     = self.devVER,
-        commandByte = tuyAPI.tuyaCommandType.DP_QUERY
+        commandByte = tuyAPI.tuyaCommandType.DP_QUERY,
+        sequenceN   = self.sequenceN
     }
     local payload = tuyAPI.tuyaEncode(myoptions)
     self:dbg("DP_QUERY payload hex: " .. self:toHex(payload))
 
     self.sock:connect(self.ip, self.port, {
         success = function()
-            self:debug("TCP connected, sending DP_QUERY")
-            self.sock:write(payload)
-            self.pingloopID = setInterval(function() self:pingTuya() end, 60000)
+            self:debug("TCP connected — registering read, then sending DP_QUERY")
+            -- Register waitForData FIRST so we don't miss a fast response
             self:waitForData()
+            -- Then send DP_QUERY with callbacks to detect write failures
+            self.sock:write(payload, {
+                success = function()
+                    self:debug("DP_QUERY write OK")
+                end,
+                error = function(err)
+                    self:debug("DP_QUERY write FAILED: " .. tostring(err))
+                    self:disconnect()
+                    self:updateView("labelStatus", "text", "Write error")
+                    self.sockloopID = fibaro.setTimeout(self.connect_timeout, function() self:connect() end)
+                end
+            })
         end,
         error = function(err)
             self:debug("TCP connect error: " .. tostring(err))
@@ -282,11 +294,11 @@ function QuickApp:waitForData()
             self.sock:close()
             self.sequenceN = 1
             self:disconnect()
-            -- This meter is push-only: it sends one CONTROL_NEW then closes (EOF).
-            -- Reconnect immediately so we are ready for the next push cycle.
-            local delay = (err == "End of file") and 100 or self.connect_timeout
-            self:updateView("labelStatus", "text", (err == "End of file") and "Waiting for push..." or "Connection error")
-            self.dataloopID = fibaro.setTimeout(delay, function() self:connect() end)
+            -- "End of file" is normal: this meter pushes one CONTROL_NEW then closes.
+            -- Use the full connect_timeout before reconnecting so we don't flood the device.
+            local label = (err == "End of file") and "Waiting for next push..." or "Connection error"
+            self:updateView("labelStatus", "text", label)
+            self.dataloopID = fibaro.setTimeout(self.connect_timeout, function() self:connect() end)
         end
     })
 end
