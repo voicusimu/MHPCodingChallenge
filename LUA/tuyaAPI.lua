@@ -353,6 +353,71 @@ local function crc32(bytes)
 end
 
 --------------------------------------------------------------------------------------------------------------------------
+-- Protocol 3.5  (prefix 0x00006699 / suffix 0x00009966, AES-128-GCM, no CRC)
+-- Requires: gcmlib.lua, sha256lib.lua
+--------------------------------------------------------------------------------------------------------------------------
+
+local PREFIX_6699 = string.pack(">I4", 0x00006699)
+local SUFFIX_9966 = string.pack(">I4", 0x00009966)
+local HEADER_SIZE_35 = 18  -- 4 prefix + 2 unknown + 4 seqno + 4 cmd + 4 length
+
+-- Build a v3.5 GCM-encrypted packet.
+-- options: { data (binary string), key (16-byte binary), commandByte (int), sequenceN (int) }
+-- Returns: complete binary packet string
+local function encode35(options)
+    local iv       = gcmlib.gen_iv()           -- 12-byte unique IV
+    local plaintext = options.data or ""
+    local cmd      = options.commandByte
+    local seqno    = options.sequenceN or 0
+    -- msg_len = IV(12) + ciphertext(#plaintext) + GCM-tag(16)  [suffix is NOT counted]
+    local msg_len  = 12 + #plaintext + 16
+    -- 18-byte header:  prefix(4) + unknown(2) + seqno(4) + cmd(4) + length(4)
+    local header   = PREFIX_6699 .. string.pack(">HI4I4I4", 0, seqno, cmd, msg_len)
+    -- AAD = header bytes 5-18 (the 14 bytes that follow the 4-byte prefix)
+    local aad      = string.sub(header, 5)
+    -- GCM-encrypt; returns ciphertext || 16-byte auth tag
+    local encrypted = gcmlib.encrypt(options.key, iv, plaintext, aad)
+    return header .. iv .. encrypted .. SUFFIX_9966
+end
+
+-- Parse a v3.5 packet from buffer.
+-- Returns: ciphertext_with_tag, aad, iv, cmd, seqno, err
+-- On error: nil, nil, nil, nil, nil, "description"
+local function parsePacket35(buffer)
+    if #buffer < HEADER_SIZE_35 + 12 + 16 + 4 then
+        return nil, nil, nil, nil, nil, "v3.5 packet too short (" .. #buffer .. " bytes)"
+    end
+    local prefix = string.unpack(">I4", buffer, 1)
+    if prefix ~= 0x00006699 then
+        return nil, nil, nil, nil, nil,
+            string.format("Not a v3.5 packet (prefix 0x%08X)", prefix)
+    end
+    -- header bytes 5-18: unknown(2) + seqno(4) + cmd(4) + length(4)
+    local _unknown, seqno, cmd, length = string.unpack(">HI4I4I4", buffer, 5)
+    local aad = string.sub(buffer, 5, 18)        -- 14 bytes for AAD
+    local iv  = string.sub(buffer, 19, 30)       -- 12 bytes
+    -- ciphertext+tag length = length - 12(IV)   [suffix is NOT in length field]
+    local ct_len = length - 12
+    if ct_len < 16 then
+        return nil, nil, nil, nil, nil,
+            "v3.5 ciphertext+tag too short (" .. ct_len .. " bytes)"
+    end
+    local ciphertext_with_tag = string.sub(buffer, 31, 30 + ct_len)
+    return ciphertext_with_tag, aad, iv, cmd, seqno, nil
+end
+
+-- Decrypt a v3.5 ciphertext+tag blob.
+-- Returns: plaintext (binary string), nil
+--      or  nil, "error description"
+local function getPayload35(ciphertext_with_tag, aad, iv, key)
+    local plaintext = gcmlib.decrypt(key, iv, ciphertext_with_tag, aad)
+    if plaintext == nil then
+        return nil, "GCM authentication failed (wrong key or tampered packet)"
+    end
+    return plaintext, nil
+end
+
+--------------------------------------------------------------------------------------------------------------------------
 --
 --------------------------------------------------------------------------------------------------------------------------
 
@@ -373,5 +438,9 @@ tuyAPI = {
    getPayload       = getPayload,
    tuyaEncode       = encode,
    tuyaDecode       = decode,
-   tuyaCommandType  = CommandType
+   tuyaCommandType  = CommandType,
+   -- v3.5 GCM functions
+   encode35         = encode35,
+   parsePacket35    = parsePacket35,
+   getPayload35     = getPayload35,
 }
