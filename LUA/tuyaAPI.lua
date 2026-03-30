@@ -154,9 +154,14 @@ local function parsePacket(buffer)
     -- This field is only present in messages from the devices, absent in messages sent to device
     local returnCode = payload:readUInt32BE(16);
  
-    -- Get the payload data, adjust for DP_REFRESH / DP_QUERY cmd
+    -- Get the payload data, adjust per command type:
+    --   STATUS (8)       : has return code (4 bytes) + version prefix → offset = 1
+    --   DP_QUERY (10)    : no return code, version prefix stripped differently → offset = -14
+    --   CONTROL_NEW (13) : no return code + version prefix → offset = -3
+    --   DP_REFRESH (18)  : same as DP_QUERY → offset = -14
     local offset = 1
     if commandByte == 10 or commandByte == 18 then offset = -15 + 1 end
+    if commandByte == 13 then offset = -3 end  -- CONTROL_NEW: no return code, has 3.3 version prefix
     local payloaddata = {}
     payloaddata = payload:slice(HEADER_SIZE + 4 + offset, HEADER_SIZE + payloadSize - 8)
 
